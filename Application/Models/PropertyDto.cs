@@ -1,6 +1,6 @@
-﻿namespace Domain
+﻿namespace Application.Models
 {
-    public class Property
+    public class PropertyDto
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -18,7 +18,6 @@
         public int Kitchens { get; set; }
         public int Lounge { get; set; }
         public int Dining { get; set; }
-        public DateTime ListDate { get; set; }
-        public List<Image> Images { get; set; }
+
     }
 }

@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Application.Models;
+using Domain;
+using MediatR;
 
 namespace Application.Properties.Queries
 {
-    internal class GetAllPropertyRequest
+    public class GetAllPropertyRequest : IRequest<List<Property>>
     {
+
     }
 }
