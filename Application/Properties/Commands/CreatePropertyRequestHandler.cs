@@ -18,6 +18,8 @@ namespace Application.Properties.Commands
         public async Task<bool> Handle(CreatePropertyRequest request, CancellationToken cancellationToken)
         {
             Property property = _mapper.Map<Property>(request.propertyRequest);
+
+            property.ListDate = DateTime.Now;
             await _propertyRepo.AddNewAsync(property);  
             
             return true;

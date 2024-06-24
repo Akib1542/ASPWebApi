@@ -18,7 +18,7 @@ namespace ASPWebApi.Controllers
         }
 
         [HttpPost("Add")]
-        public async Task<IActionResult> AddNewProperty([FromBody] NewPropertyRequest newPropertyRequest)
+        public async Task<IActionResult> AddNewProperty([FromBody] NewProperty newPropertyRequest)
         {
             bool isSuccess = await _midatrSender.Send(new CreatePropertyRequest (newPropertyRequest) );
             if(isSuccess)
@@ -26,6 +26,17 @@ namespace ASPWebApi.Controllers
                 return Ok("Property Created Successfully.");
             }
             return BadRequest("Failed to Create property");
+        }
+
+        [HttpPut("Update")]
+        public async Task<IActionResult> UpdateProperty([FromBody]UpdateProperty updateProperty)
+        {
+            bool isSuccessful = await _midatrSender.Send(new UpdatePropertyRequest(updateProperty));
+            if(isSuccessful)
+            {
+                return Ok("Successfully Property Updated!");
+            }
+            return NotFound("Property Does not EXIST!");
         }
     }
 }

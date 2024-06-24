@@ -5,8 +5,8 @@ namespace Application.Properties.Commands
 {
     public class CreatePropertyRequest : IRequest<bool>
     {
-        public NewPropertyRequest propertyRequest { get; set; }
-        public CreatePropertyRequest(NewPropertyRequest newPropertyRequest)
+        public NewProperty propertyRequest { get; set; }
+        public CreatePropertyRequest(NewProperty newPropertyRequest)
         {
             propertyRequest = newPropertyRequest;
         }
