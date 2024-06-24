@@ -18,6 +18,8 @@
         public int Kitchens { get; set; }
         public int Lounge { get; set; }
         public int Dining { get; set; }
+        public DateTime ListDate { get; set; }
+        public List<ImageDTO> Images { get; set; }
 
     }
 }

@@ -9,6 +9,10 @@ namespace Application.MappingProfiles
         public Mappings()
         {
             CreateMap<NewProperty, Property>();
+            CreateMap<Property, PropertyDto>();
+
+            CreateMap<NewImage, Image>();
+            CreateMap<Image,ImageDTO>();
         }
     }
 }
