@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Images.Queries
+namespace Application.Features.Images.Queries
 {
     public class GetImageByIdRequestHandler : IRequestHandler<GetImageByIdRequest, ImageDTO>
     {
@@ -25,7 +25,7 @@ namespace Application.Images.Queries
         public async Task<ImageDTO> Handle(GetImageByIdRequest request, CancellationToken cancellationToken)
         {
             Image imageInDb = await _imageRepo.GetByIdAsync(request.ImageId);
-            if(imageInDb != null)
+            if (imageInDb != null)
             {
                 ImageDTO imageDTO = _mapper.Map<ImageDTO>(imageInDb);
                 return imageDTO;

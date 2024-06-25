@@ -8,14 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Images.Commands
+namespace Application.Features.Images.Commands
 {
     public class CreateImageRequestHandler : IRequestHandler<CreateImageRequest, bool>
     {
         private readonly IImageRepo _imageRepo;
         private readonly IMapper _mapper;
 
-        public CreateImageRequestHandler(IImageRepo imageRepo, IMapper mapper) 
+        public CreateImageRequestHandler(IImageRepo imageRepo, IMapper mapper)
         {
             _imageRepo = imageRepo;
             _mapper = mapper;

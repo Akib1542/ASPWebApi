@@ -1,7 +1,7 @@
 ﻿using Application.Models;
 using MediatR;
 
-namespace Application.Images.Commands
+namespace Application.Features.Images.Commands
 {
     public class CreateImageRequest : IRequest<bool>
     {

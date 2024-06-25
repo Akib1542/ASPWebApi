@@ -2,7 +2,7 @@
 using Domain;
 using MediatR;
 
-namespace Application.Images.Commands
+namespace Application.Features.Images.Commands
 {
     public class UpdateImageRequestHandler : IRequestHandler<UpdateImageRequest, bool>
     {
@@ -16,7 +16,7 @@ namespace Application.Images.Commands
         public async Task<bool> Handle(UpdateImageRequest request, CancellationToken cancellationToken)
         {
             Image imageInDb = await _imageRepo.GetByIdAsync(request.UpdateImage.Id);
-            if (imageInDb!=null)
+            if (imageInDb != null)
             {
                 //update
                 imageInDb.Name = request.UpdateImage.Name;

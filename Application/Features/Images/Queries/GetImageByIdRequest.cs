@@ -1,7 +1,7 @@
 ﻿using Application.Models;
 using MediatR;
 
-namespace Application.Images.Queries
+namespace Application.Features.Images.Queries
 {
     public class GetImageByIdRequest : IRequest<ImageDTO>
     {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Images.Commands
+namespace Application.Features.Images.Commands
 {
     public class DeleteImageRequest : IRequest<bool>
     {

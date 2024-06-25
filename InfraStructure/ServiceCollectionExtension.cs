@@ -14,6 +14,7 @@ namespace InfraStructure
         {
             return services
                 .AddTransient<IPropertyRepo,PropertyRepo>()
+                .AddTransient<IImageRepo,ImageRepo>()
                 .AddDbContext<ApplicationDbContext>(Options => Options
                     .UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
         }

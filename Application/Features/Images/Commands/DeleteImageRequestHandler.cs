@@ -2,7 +2,7 @@
 using Domain;
 using MediatR;
 
-namespace Application.Images.Commands
+namespace Application.Features.Images.Commands
 {
     public class DeleteImageRequestHandler : IRequestHandler<DeleteImageRequest, bool>
     {
@@ -14,8 +14,8 @@ namespace Application.Images.Commands
         }
         public async Task<bool> Handle(DeleteImageRequest request, CancellationToken cancellationToken)
         {
-             Image imageInDb = await _imageRepo.GetByIdAsync(request.ImageId);
-            if (imageInDb!=null)
+            Image imageInDb = await _imageRepo.GetByIdAsync(request.ImageId);
+            if (imageInDb != null)
             {
                 //Delete
                 await _imageRepo.DeleteAsync(imageInDb);

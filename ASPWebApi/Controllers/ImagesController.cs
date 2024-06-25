@@ -1,8 +1,7 @@
-﻿using Application.Images.Commands;
-using Application.Images.Queries;
+﻿using Application.Features.Images.Commands;
+using Application.Features.Images.Queries;
 using Application.Models;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ASPWebApi.Controllers

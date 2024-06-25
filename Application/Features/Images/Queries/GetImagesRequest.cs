@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Images.Queries
+namespace Application.Features.Images.Queries
 {
     public class GetImagesRequest : IRequest<List<ImageDTO>>
     {
