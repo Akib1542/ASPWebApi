@@ -10,12 +10,22 @@ namespace ASPWebApi.Controllers
     [ApiController]
     public class ImagesController : ControllerBase
     {
+        #region Fields
+        
         private readonly ISender _midatrSender;
+        
+        #endregion
+
+        #region CTOR
 
         public ImagesController(ISender midatrSender)
         {
             _midatrSender = midatrSender;
         }
+
+        #endregion
+
+        #region AddImage
 
         [HttpPost("AddImage")]
         public async Task<IActionResult> AddNewImage([FromBody] NewImage newImage)
@@ -28,6 +38,9 @@ namespace ASPWebApi.Controllers
             return BadRequest("Faild to create Image");
         }
 
+        #endregion
+
+        #region Update
         [HttpPut("UpdateImage")]
         public async Task<IActionResult>UpdateImage(UpdateImage updateImage)
         {
@@ -39,16 +52,24 @@ namespace ASPWebApi.Controllers
             return NotFound("Image does not exist!");
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteImage(int id)
+        #endregion
+
+        #region GetAllImage
+
+        [HttpGet("GetAllImages")]
+        public async Task<IActionResult> GetImages()
         {
-            bool isSuccessfull = await _midatrSender.Send(new DeleteImageRequest(id));  
-            if(isSuccessfull)
+            List<ImageDTO> images = await _midatrSender.Send(new GetImagesRequest());
+            if (images != null)
             {
-                return Ok("Deleted successfully!");
+                return Ok(images);
             }
-            return NotFound("Image does not exist!");
+            return NotFound("No Images were found!");
         }
+
+        #endregion
+
+        #region GetImageById
 
         [HttpGet("{id}")]
         public async Task<IActionResult>GetImage(int id)
@@ -61,15 +82,21 @@ namespace ASPWebApi.Controllers
             return NotFound("Image does not exist!");
         }
 
-        [HttpGet("All")]
-        public async Task<IActionResult>GetImages()
+        #endregion
+
+        #region Delete
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteImage(int id)
         {
-            List<ImageDTO>images = await _midatrSender.Send(new GetImagesRequest());
-            if(images != null)
+            bool isSuccessfull = await _midatrSender.Send(new DeleteImageRequest(id));
+            if (isSuccessfull)
             {
-                return Ok(images);
+                return Ok("Deleted successfully!");
             }
-            return NotFound("No Images were found!");
+            return NotFound("Image does not exist!");
         }
+
+        #endregion
     }
 }

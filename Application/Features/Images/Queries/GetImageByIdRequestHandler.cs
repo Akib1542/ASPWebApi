@@ -13,14 +13,24 @@ namespace Application.Features.Images.Queries
 {
     public class GetImageByIdRequestHandler : IRequestHandler<GetImageByIdRequest, ImageDTO>
     {
+        #region Fields
+
         private readonly IImageRepo _imageRepo;
         private readonly IMapper _mapper;
+
+        #endregion
+
+        #region CTOR
 
         public GetImageByIdRequestHandler(IImageRepo imageRepo, IMapper mapper)
         {
             _imageRepo = imageRepo;
             _mapper = mapper;
         }
+
+        #endregion
+
+        #region Methods
 
         public async Task<ImageDTO> Handle(GetImageByIdRequest request, CancellationToken cancellationToken)
         {
@@ -32,5 +42,8 @@ namespace Application.Features.Images.Queries
             }
             return null;
         }
+
+        #endregion
+
     }
 }

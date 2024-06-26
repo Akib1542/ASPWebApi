@@ -7,13 +7,24 @@ namespace Application.Features.Properties.Commands
 {
     public class CreatePropertyRequestHandler : IRequestHandler<CreatePropertyRequest, bool>
     {
+        #region Fields
+
         private readonly IPropertyRepo _propertyRepo;
         private readonly IMapper _mapper;
+
+        #endregion
+
+        #region CTOR
+
         public CreatePropertyRequestHandler(IPropertyRepo propertyRepo, IMapper mapper)
         {
             _propertyRepo = propertyRepo;
             _mapper = mapper;
         }
+
+        #endregion
+
+        #region Methods
 
         public async Task<bool> Handle(CreatePropertyRequest request, CancellationToken cancellationToken)
         {
@@ -24,5 +35,7 @@ namespace Application.Features.Properties.Commands
 
             return true;
         }
+
+        #endregion
     }
 }

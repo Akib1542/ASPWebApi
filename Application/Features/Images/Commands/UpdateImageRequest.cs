@@ -10,10 +10,19 @@ namespace Application.Features.Images.Commands
 {
     public class UpdateImageRequest : IRequest<bool>
     {
+        #region Fields
+
         public UpdateImage UpdateImage { get; set; }
+
+        #endregion
+
+        #region Method
+
         public UpdateImageRequest(UpdateImage updateImage)
         {
             UpdateImage = updateImage;
         }
+
+        #endregion
     }
 }

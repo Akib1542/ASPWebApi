@@ -6,11 +6,23 @@ namespace Application.Features.Properties.Commands
 {
     public class UpdatePropertyRequestHandler : IRequestHandler<UpdatePropertyRequest, bool>
     {
+        #region Fields
+
         private readonly IPropertyRepo _propertyRepo;
+
+        #endregion
+
+        #region CTOR
+
         public UpdatePropertyRequestHandler(IPropertyRepo propertyRepo)
         {
             _propertyRepo = propertyRepo;
         }
+
+        #endregion
+
+        #region Methods
+
         public async Task<bool> Handle(UpdatePropertyRequest request, CancellationToken cancellationToken)
         {
             //Check if the record exist in DB
@@ -40,5 +52,7 @@ namespace Application.Features.Properties.Commands
             return false;
 
         }
+
+        #endregion
     }
 }

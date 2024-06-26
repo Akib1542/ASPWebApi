@@ -1,6 +1,5 @@
 using InfraStructure;
 using Application;
-using Application.Properties.Queries;
 
 var builder = WebApplication.CreateBuilder(args);
 

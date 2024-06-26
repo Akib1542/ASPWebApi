@@ -9,11 +9,19 @@ namespace Application.Features.Images.Commands
 {
     public class DeleteImageRequest : IRequest<bool>
     {
+        #region Fields
+
         public int ImageId { get; set; }
+
+        #endregion
+
+        #region CTOR
 
         public DeleteImageRequest(int imageId)
         {
             ImageId = imageId;
         }
+
+        #endregion
     }
 }

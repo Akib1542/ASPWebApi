@@ -6,12 +6,23 @@ namespace Application.Features.Properties.Commands
 {
     public class DeletePropertyRequestHandler : IRequestHandler<DeletePropertyRequest, bool>
     {
+        #region Fields
+
         private readonly IPropertyRepo _propertyRepo;
+
+        #endregion
+
+        #region CTOR
 
         public DeletePropertyRequestHandler(IPropertyRepo propertyRepo)
         {
             _propertyRepo = propertyRepo;
         }
+
+        #endregion
+
+        #region Methods
+
         public async Task<bool> Handle(DeletePropertyRequest request, CancellationToken cancellationToken)
         {
             var propertyInDb = await _propertyRepo.GetByIdAsync(request.PropertyID);
@@ -22,5 +33,7 @@ namespace Application.Features.Properties.Commands
             }
             return false;
         }
+
+        #endregion
     }
 }

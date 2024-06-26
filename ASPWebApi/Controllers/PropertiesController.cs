@@ -1,10 +1,8 @@
-﻿using Application.Models;
-using Application.Properties.Commands;
-using Application.Properties.Queries;
+﻿using Application.Features.Properties.Commands;
+using Application.Features.Properties.Queries;
+using Application.Models;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Reflection;
 
 namespace ASPWebApi.Controllers
 {
@@ -12,12 +10,18 @@ namespace ASPWebApi.Controllers
     [ApiController]
     public class PropertiesController : ControllerBase
     {
+        #region Fields
         private readonly ISender _midatrSender;
+        #endregion
 
+        #region CTOR
         public PropertiesController(ISender midatrSender)
         {
             _midatrSender = midatrSender;
         }
+        #endregion
+
+        #region Add Property
 
         [HttpPost("Add")]
         public async Task<IActionResult> AddNewProperty([FromBody] NewProperty newPropertyRequest)
@@ -30,6 +34,10 @@ namespace ASPWebApi.Controllers
             return BadRequest("Failed to Create property");
         }
 
+        #endregion
+
+        #region Update
+
         [HttpPut("Update")]
         public async Task<IActionResult> UpdateProperty([FromBody]UpdateProperty updateProperty)
         {
@@ -41,8 +49,11 @@ namespace ASPWebApi.Controllers
             return NotFound("Property Does not EXIST!");
         }
 
-        [HttpGet("GetAllAsync")]
+        #endregion
 
+        #region Get All Property
+
+        [HttpGet("GetAllProperties")]
         public async Task<IActionResult> GetAllProperty()
         {
             var data = await _midatrSender.Send(new GetAllPropertyRequest());
@@ -53,7 +64,11 @@ namespace ASPWebApi.Controllers
             else return NotFound("You have no data!");
         }
 
-        [HttpGet("GetPropertyByIdAsync")]
+        #endregion
+
+        #region Get Property by Id
+
+        [HttpGet("{id}")]
         public async Task <IActionResult>GetPropertyById(int id)
         {
             var data = await _midatrSender.Send(new GetPropertyByIdRequest(id));
@@ -64,7 +79,11 @@ namespace ASPWebApi.Controllers
             return NotFound();
         }
 
-        [HttpDelete("GetDeleteByIdAsync")]
+        #endregion
+
+        #region Delete
+
+        [HttpDelete("{id}")]
         public async Task<IActionResult> GetDeleteById(int id)
         {
             var data = await _midatrSender.Send(new DeletePropertyRequest(id));
@@ -74,6 +93,8 @@ namespace ASPWebApi.Controllers
             }
             return NotFound();
         }
+
+        #endregion
 
     }
 }
